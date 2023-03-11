@@ -1,0 +1,102 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site1.master.cs" Inherits="SJ_Botique_System.GUI.Site1" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title></title>
+    <%--bootstrap css--%>
+    <link href="../../bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <%--datatables css--%>
+    <link href="../../datatables/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <%--fontawesome css--%>
+    <link href="../../fontawesome/css/all.css" rel="stylesheet" />
+    <%--jquery--%>
+    <script src="../../bootstrap/js/jquery-3.3.1.slim.min.js"></script>
+    <%--my custom stylesheet--%>
+    <link href="../../mycss/css.css" rel="stylesheet" />
+    <%--popper js--%>
+    <script src="../../bootstrap/js/popper.min.js"></script>
+    <%--bootstrap js--%>
+    <script src="../../bootstrap/js/bootstrap.min.js"></script>
+    <%--mycustomjs--%>
+    <script src="../../myjs/mycustomjs.js"></script>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <a class="navbar-brand text-dark" href="#">
+                    <!--<img src="../../imgs/SJ%20Boutique.png" />-->
+                    S & J Boutique
+                </a>
+                <asp:LinkButton ID="btnAbout" runat="server" CssClass="navbar-brand text-dark ml-2 " Font-Size="Large" ForeColor="Black" OnClick="btnAbout_Click">About Us </asp:LinkButton>
+
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active"></li>
+                        <li class="nav-item active"></li>
+
+                    </ul>
+
+                    <ul class="navbar-nav">
+                        <li>
+                            <asp:LinkButton class="nav-link text-dark" ID="homeButton" runat="server" OnClick="btnHome_Click"> Home </asp:LinkButton>
+                        </li>
+                        <li class="nav-item active">
+                            <asp:LinkButton class="nav-link" ID="btnLogout" runat="server" OnClick="LinkButton3_Click">Logout</asp:LinkButton>
+                        </li>
+                        <li class="nav-item active">
+                            <asp:LinkButton class="nav-link" ID="btnUser" runat="server" OnClick="LinkButton7_Click">Hello user</asp:LinkButton>
+                        </li>
+
+
+                    </ul>
+                </div>
+
+
+            </nav>
+        </div>
+
+        <!-- Main Content Placeholder -->
+        <div>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+        <!-- Main Content Placeholder -->
+
+        <!-- Footer -->
+        <footer>
+            <div id="footer1" class="container-fluid">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                        <p>
+                            <asp:LinkButton class="footerlinks" ID="LinkButton11" runat="server" OnClick="LinkButton11_Click">Frequently Asked Questions</asp:LinkButton>
+                            &nbsp;
+                            <asp:LinkButton class="footerlinks" ID="LinkButton12" runat="server" OnClick="LinkButton12_Click">Created By</asp:LinkButton>
+                            &nbsp;
+                        </p>
+
+                    </div>
+
+                </div>
+            </div>
+            <div id="footer2" class="container-fluid">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                        <p style="color: whitesmoke">&copy All right Reserved. &nbsp&nbsp <a href='https://www.facebook.com/' target="_blank"><i class="fa-brands fa-facebook mr-auto"></i></a>&nbsp&nbsp <a href='https://web.whatsapp.com/' target="_blank"><i class="fa-brands fa-whatsapp mr-auto"></i></a>&nbsp&nbsp<a href='https://www.instagram.com/' target="_blank"><i class="fa-brands fa-instagram mr-auto"></i></a></p>
+                    </div>
+                </div>
+            </div>
+
+        </footer>
+        <!-- ./Footer -->
+    </form>
+</body>
+</html>

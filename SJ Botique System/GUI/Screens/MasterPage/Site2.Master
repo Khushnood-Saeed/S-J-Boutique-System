@@ -1,0 +1,192 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site2.master.cs" Inherits="SJ_Botique_System.GUI.Screens.MasterPage.Site2" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title></title>
+    <%--bootstrap css--%>
+    <link href="../../bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <%--datatables css--%>
+    <link href="../../datatables/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <%--fontawesome css--%>
+    <link href="../../fontawesome/css/all.css" rel="stylesheet" />
+    <%--jquery--%>
+    <script src="../../bootstrap/js/jquery-3.3.1.slim.min.js"></script>
+    <%--my custom stylesheet--%>
+    <%--<link href="../../mycss/css.css" rel="stylesheet" />--%>
+    <%--popper js--%>
+    <script src="../../bootstrap/js/popper.min.js"></script>
+    <%--bootstrap js--%>
+    <script src="../../bootstrap/js/bootstrap.min.js"></script>
+    <%--mycustomjs--%>
+    <script src="../../myjs/mycustomjs.js"></script>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+
+<body>
+    <style>
+        body {
+            /*height: 100vh;*/
+            /*overflow-x: hidden;*/
+            padding-top: 55px;
+            /*overflow-y: scroll;*/
+        }
+
+        /* set the sidebar width */
+        .w-sidebar {
+            width: 200px;
+            max-width: 200px;
+        }
+
+        .row.collapse {
+            margin-left: -200px;
+            left: 0;
+            transition: margin-left .15s linear;
+        }
+
+            .row.collapse.show {
+                margin-left: 0 !important;
+            }
+
+        .row.collapsing {
+            margin-left: -200px;
+            left: -0.05%;
+            transition: all .15s linear;
+        }
+
+        /* optional */
+        .vh-100 {
+            min-height: 100vh;
+        }
+
+        /* optional for overlay sidebar on small screens */
+        @media (max-width:768px) {
+
+            .row.collapse,
+            .row.collapsing {
+                margin-left: 0 !important;
+                left: 0 !important;
+                overflow: visible;
+            }
+
+            .row > .sidebar.collapse {
+                display: flex !important;
+                margin-left: -100% !important;
+                transition: all .3s linear;
+                position: fixed;
+                z-index: 1050;
+                max-width: 0;
+                min-width: 0;
+                flex-basis: auto;
+            }
+
+                .row > .sidebar.collapse.show {
+                    margin-left: 0 !important;
+                    width: 100%;
+                    max-width: 100%;
+                    min-width: initial;
+                }
+
+            .row > .sidebar.collapsing {
+                display: flex !important;
+                margin-left: -10% !important;
+                transition: all .2s linear !important;
+                position: fixed;
+                z-index: 1050;
+                min-width: initial;
+            }
+        }
+    </style>
+    <form id="form1" runat="server">
+
+
+
+        <div class="container-fluid fixed-top bg-dark py-3">
+
+            <div class="row collapse show no-gutters d-flex h-100 position-relative">
+
+                <div class="col-3 px-0 w-sidebar navbar-collapse collapse d-none d-md-flex">
+                    <!-- spacer col -->
+
+                </div>
+                <div class="col px-2 px-md-0">
+                    <!-- toggler -->
+                    <a data-toggle="collapse" href="#" data-target=".collapse" role="button" class="p-1">
+                        <i class="fa fa-bars fa-lg"></i>
+                    </a>
+                    <a class="navbar-brand text-white" href="#">
+                        <!--<img src="../../imgs/SJ%20Boutique.png" />-->
+                        S & J Boutique
+                    </a>
+                </div>
+                <div class="row">
+                    <asp:LinkButton class="m-2 p-2 navbar-brand text-info mr-2" ID="LinkButton2" runat="server" OnClick="LinkButton2_Click" Visible="false">Home</asp:LinkButton>
+                    <asp:LinkButton class="m-2 p-2 navbar-brand text-info mr-2" ID="LinkButton7" runat="server" OnClick="LinkButton7_Click">Hello user</asp:LinkButton>
+                    <asp:LinkButton ID="LinkButton1" runat="server" CssClass="m-2 p-2 navbar-brand text-info mr-2" OnClick="LinkButton1_Click">Logout</asp:LinkButton>
+                    <%--<a class="navbar-brand text-secondary" href="#"></a>--%>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid px-0 h-100">
+            <div class="row vh-100 collapse show no-gutters d-flex h-100 position-relative">
+                <div class="col-3 p-0 vh-100 h-100 w-sidebar navbar-collapse collapse d-none d-md-flex sidebar">
+                    <!-- fixed sidebar -->
+
+                    <div class="position-fixed bg-dark text-white h-100 w-sidebar">
+                        <div class="d-flex flex-column justify-content-around">
+                            <ul class="nav flex-column mt-5 m-1">
+                                <li class="mb-auto p-2">
+                                    <button type="button" id="btnWorkshift" class="btn btn-outline-info btn-md btn-block text-md-center" onserverclick="workShift" runat="server" visible="false">WorkShifts Management</button>
+                                </li>
+                                <li class="mb-auto p-2">
+                                    <button type="button" id="btnPerformance" class="btn btn-outline-info btn-md btn-block text-md-center" runat="server" visible="false">Performance Reports</button>
+                                </li>
+                                <li class="mb-auto p-2">
+                                    <button type="button" id="btnAttendance" class="btn btn-outline-info btn-md btn-block text-md-center" runat="server" visible="false">Track Attendance</button>
+                                </li>
+                                <li class="mb-auto p-2">
+                                    <button type="button" id="btnUserManagement" class="btn btn-outline-info btn-md btn-block text-md-center" runat="server" visible="false">User Management</button>
+                                </li>
+                                <li class="mb-auto p-2">
+                                    <button type="button" id="btnRoleManagement" class="btn btn-outline-info btn-md btn-block text-md-center" onserverclick="roleManagement" runat="server" visible="false">Role Management</button>
+                                </li>
+                                <li class="mb-auto p-2">
+                                    <button type="button" id="btnOutlet" class="btn btn-outline-info btn-md btn-block" runat="server" visible="false">Outlet Operations</button>
+                                </li>
+                                <li class="mb-auto p-2">
+                                    <button type="button" id="btnPolicy" class="btn btn-outline-info btn-md btn-block" onserverclick="DisplayPolicy" runat="server" visible="false">Policy Management</button>
+                                </li>
+                                <li class="mb-auto p-2">
+                                    <button type="button" id="btnSalesReport" class="btn btn-outline-info btn-md btn-block" runat="server" visible="false">Sales Report</button>
+                                </li>
+                                <li class="mb-auto p-2">
+                                    <button type="button" id="btnSupplier" class="btn btn-outline-info btn-md btn-block" runat="server" visible="false">Supplier Info</button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+                <br />
+                <div class="col p-3">
+                    <center>
+                        <img src="../../imgs/user.png" width="100" height="100" class="mt-4" />
+                    </center>
+                    <div>
+
+                        <asp:ContentPlaceHolder ID="ContentPlaceHolder3" runat="server">
+                        </asp:ContentPlaceHolder>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Main Content Placeholder -->
+
+        <!-- Footer -->
+    </form>
+</body>
+</html>
